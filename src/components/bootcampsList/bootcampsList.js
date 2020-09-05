@@ -27,6 +27,7 @@ class BootcampListComponent extends Component {
             ]
         }
     }
+    
     render() {
         const {bootcamps, searchField} = this.state;
         const filteredBootcamps = bootcamps.filter(bootcamp => bootcamp.name.toLowerCase().includes(searchField.toLocaleLowerCase()))
