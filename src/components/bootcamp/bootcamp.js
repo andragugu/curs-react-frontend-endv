@@ -10,7 +10,7 @@ const BootcampComponent = props => {
         <div className="card-container">
             <p>{name}</p>
             <p>{description}</p>
-            <Link to={`/bootcamp/${id}`}>See details</Link>
+            <Link to={`/bootcamps/${id}`}>See details</Link>
         </div>
     )
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import BootcampComponent from '../bootcamp/bootcamp';
 import SearchBarCompoent from '../searchBar/searchBar';
 import './bootcampsList.css';
+import axios from 'axios';
+import Spinner from '../spinnerComponent/spinner';
 
 class BootcampListComponent extends Component {
     constructor() {
@@ -9,29 +11,32 @@ class BootcampListComponent extends Component {
 
         this.state = {
             searchField: '',
+            isLoading: false,
             bootcamps: [
-            {   id: 1,
-                name: "Frontend Bootcamp",
-                description: "Frontend Bootcamp"
-            },
-            {
-                id: 2,
-                name: "Backend Bootcamp",
-                description: "Backend Bootcamp"
-            },
-            {
-                id: 3,
-                name: "ML Bootcamp",
-                description: "ML Bootcamp"
+                {
+                name: '',
+                id: '1'
             }
             ]
         }
     }
+
+    componentDidMount() {
+        this.setState({isLoading: true});
+        axios.get('http://www.endava-bootcamp.com/api/v1/bootcamps/', {headers: {
+            "Access-Control-Allow-Origin": "*"
+        }}).then(
+            response =>  {
+                console.log(response, 'raspuns')
+                this.setState({bootcamps: response.data.data, isLoading: false})});
+        
+    }
     
     render() {
-        const {bootcamps, searchField} = this.state;
+        const {bootcamps, searchField, isLoading} = this.state;
+        console.log(bootcamps, 'bootcamps');
         const filteredBootcamps = bootcamps.filter(bootcamp => bootcamp.name.toLowerCase().includes(searchField.toLocaleLowerCase()))
-        return (
+        return isLoading ? <Spinner /> : (
             <div className="container">
                 <SearchBarCompoent placeholder="Search bootcamps" handleChange={e => this.setState({searchField: e.target.value})}></SearchBarCompoent>
                 <div className="card-list">
