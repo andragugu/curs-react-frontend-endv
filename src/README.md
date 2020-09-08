@@ -7,4 +7,4 @@ Also I want to be able to delete a bootcamp from the list;
 React course homework session 3:
 
 Add some mock data to the coursesList component(class component at this point) and also make the functional version of the coursesList component using the useState hook;
-Change the sideBar component so that it has it's own state , not received from props; Add the search functionality for the courses list as well;
+Change the search component so that it has it's own state , not received from props; Add the search functionality for the courses list as well;
