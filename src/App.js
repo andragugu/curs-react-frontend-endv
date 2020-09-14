@@ -12,6 +12,7 @@ import BootcampComponent from './components/bootcamp/bootcamp';
 import BootcampDetailsComponent from './components/bootcampDetails/bootcampDetails';
 import FormComponent from './components/forms/formComponent/formComponent';
 import FormParentComponent from './components/forms/formParent/formParent';
+import BootcampsRouteComponent from './components/hooksVersion/BootcampsParent/BootcampsParent';
 
     class  App extends Component {
     constructor() {
@@ -41,6 +42,7 @@ import FormParentComponent from './components/forms/formParent/formParent';
                     <Route exact path='/courses/:courseId' component={CourseDetails} />
                     <Route exact path='/bootcamps/add' component={FormParentComponent}></Route>
                     <Route exact path='/bootcamps/:id' component={BootcampDetailsComponent}></Route>
+                    <Route exact path="/hooks" component={BootcampsRouteComponent}></Route>
                 </Switch>
 
             </Fragment>
